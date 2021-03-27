@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+  <title>Index</title>
+</head>
+
+
+	<body>
+	
+	<div class="container">
+
+			
+		<table class="table table-bordered">
+	    	<th>id</th><th>brand</th><th>make</th><th>ppd</th><th>fuel efficiency</th><th>Availlability</th>
+		        {% for key, values in data.items() %}		
+		        	{% for row in values %}
+		        	<tr>
+		        		<td>{{row[0]}}</td>
+		        		<td>{{row[2]}}</td>
+		        		<td>{{row[3]}}</td>
+		        		<td>{{row[1]}}</td>
+		        		<td>{{row[4]}}</td>
+		        		<td>{{row[5]}}</td>
+		        	
+		        	
+		    		</tr>
+
+		        	{% endfor %}			
+		        
+	    		{%endfor%}
+		</table>
+				
+
+	</div>
+	<div class="container">
+
+		<form action="/add_car" method="post">
+				<label>Enter the car information</label><br>
+		  		<input type="text" placeholder="enter car id" name="ID"></input><br>
+		  		<input type="text" placeholder="per day rate" name="ppd"></input><br>
+		  		<input type="text" placeholder="fuel efficiency" name="fuel_efficency"></input><br>
+		  		<input type="text" placeholder="car brand" name="car_brand"></input><br>
+		  		<input type="text" placeholder="car make" name="car_make"></input><br>
+		  		<input type="text" placeholder="car plate number" name="car_plate_no"></input><br>
+		  		
+		  		<input type="submit" value="Add"></input>
+			
+		</form>
+
+	</div>
+
+	
+
+		
+	</body>
+</html>

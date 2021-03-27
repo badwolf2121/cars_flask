@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+  <title>Index</title>
+</head>
+
+
+	<body>
+	
+	<div class="container">
+
+			<form action="/book_car" method="post">
+				<table class="table table-bordered">
+			    	<th>id</th><th>fuel efficiency</th><th>make</th><th>model</th><th>ppd</th><th>availability</th><th>numberplate</th>
+				        {% for key, values in data["cars_for_rent"].items() %}	
+				        	{%for row in values%}				        		
+					        	<tr>
+					        		<td><input type="radio" name="car_id" value={{row[0]}}><label>{{row[0]}}</label></td>
+					        		{%for each_col in row[1:]%}
+					        			<td>{{each_col}}</td>
+					        		{% endfor %}
+				        		</tr>
+				        	{%endfor%}				
+				        <!-- <tr>
+				        	<td>
+				        		<input type="radio" id="car_id" name="car_id" value="{{key}}">
+  								<label for="car_id">{{key}}</label><br>
+				        	</td>					        	
+				        	{% for value in values[:-1]%}
+				        		<td>{{value}}</td>
+				        	{% endfor %}
+				        	
+				    	</tr> -->
+			    		{%endfor%}
+				</table>
+				<input type="submit" value="Book"></input>
+			</form>
+	</div>
+
+	<div class="container">
+		<p>These are the cars rented by you</p>
+	</div>
+
+	<div class="container">
+
+			<form action="/return_to_shed" method="post">
+				<table class="table table-bordered">
+			    	<th>id</th><th>date</th><th>make</th><th>model</th><th>numberplate</th>
+				        {% for key, values in data["cars_already_rented"].items() %}	
+				        	{%for row in values%}				        		
+					        	<tr>
+					        		<td><input type="radio" name="car_id" value={{row[0]}}><label>{{row[0]}}</label></td>
+					        		{%for each_col in row[1:]%}
+					        			<td>{{each_col}}</td>
+					        		{% endfor %}
+				        		</tr>
+				        	{%endfor%}				
+				        <!-- <tr>
+				        	<td>
+				        		<input type="radio" id="car_id" name="car_id" value="{{key}}">
+  								<label for="car_id">{{key}}</label><br>
+				        	</td>					        	
+				        	{% for value in values[:-1]%}
+				        		<td>{{value}}</td>
+				        	{% endfor %}
+				        	
+				    	</tr> -->
+			    		{%endfor%}
+				</table>
+				<input type="submit" value="Return"></input>
+			</form>
+		
+
+		
+	
+
+
+
+	</div>
+
+	
+
+
+
+
+
+
+		
+	</body>
+</html>
